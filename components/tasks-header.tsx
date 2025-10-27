@@ -12,7 +12,7 @@ interface TasksHeaderProps {
 export default function TasksHeader({ hasTasks }: TasksHeaderProps) {
   const utils = trpc.useUtils();
 
-  // Get live task data to calculate completed tasks reactively
+  // Here I'm getting live task data to calculate completed tasks reactively
   const { data: tasksList } = trpc.getTasksList.useQuery();
   const hasCompletedTasks =
     tasksList?.items.some((task) => task.completed) ?? false;
@@ -55,6 +55,7 @@ export default function TasksHeader({ hasTasks }: TasksHeaderProps) {
           variant="destructive"
           className="hover:cursor-pointer"
         >
+          {/* This button doesn't have loading state because this mutation is very fast, the blink was honestly uglier than not having loading state */}
           <Trash2Icon className="mr-2 h-4 w-4" />
           Clear Completed
         </Button>

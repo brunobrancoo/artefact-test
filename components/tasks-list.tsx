@@ -76,9 +76,11 @@ export default function TasksList({ initialTasks }: { initialTasks: Task[] }) {
           isPendingMutation={deletingTaskId === task.id}
         />
       ))}
+
       {/* Using this div to trigger the infinite scroll */}
+
       {hasNextPage && (
-        <div ref={loadMoreRef} className="py-8 text-center text-gray-500">
+        <div ref={loadMoreRef} className="py-8 text-center text-white">
           {isFetchingNextPage ? (
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
