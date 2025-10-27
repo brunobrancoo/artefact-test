@@ -98,6 +98,14 @@ export const appRouter = router({
       if (updateIndex === -1) {
         throw new Error("The task you're trying to update does not exist.");
       }
+
+      const duplicateTask = tasksList.find(
+        (task) => task.titulo === input.titulo && task.id !== input.id,
+      );
+
+      if (duplicateTask) {
+        throw new Error("You already have a task with this title");
+      }
       tasksList[updateIndex] = {
         ...tasksList[updateIndex],
         descricao: input.descricao,
